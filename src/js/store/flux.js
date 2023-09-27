@@ -45,8 +45,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setfavorites:(name)=>{
 				setStore({hearts:name})
 			},
-			deletehearts:(index)=>{
-				console.log(index)
+			deletehearts:(indexdelete)=>{
+				setStore({hearts:hearts.filter((item, index)=>index!=indexdelete)})
+				
 			},
 			changeColor: (index, color) => {
 				//get the store

@@ -6,7 +6,7 @@ import startwars from "../../img/startwars.jpg";
 
 
 export const Navbar = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
@@ -23,7 +23,7 @@ export const Navbar = () => {
 						<li
 							key={index}
 							className="divcard m-5">
-								<div className="d-flex justify-content-center"><p className="px-2">{item}</p>	<button onClick={()=>deletehearts(index)}><FaTrashCan/></button></div>
+								<div className="d-flex justify-content-center"><p className="px-2">{item}</p>	<button onClick={()=>actions.deletehearts(index)}><FaTrashCan/></button></div>
 											
 						</li>
 					);
