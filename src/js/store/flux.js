@@ -12,17 +12,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			planets: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
+			loadDataplanets: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+				const {planets}= getStore();
+				for(let i=1; i<=60; i++){
+				fetch("https://www.swapi.tech/api/planets"+"/"+ i.toString()
+				)
+					.then(res => {
+						if (res.status>= 200 && res.status<=300){
+							console.log("el request se hizo bien");
+							return res.json();
+						}else if (res.status ==404){
+							
+							console.log(`hubo un error ${res.status} en el request`)
+							createuser();
+						}
+					})
+					.then(data => {
+							console.log (data.result.properties)
+							const{addplanets}=getActions();
+							addplanets(data.result.properties);
+							// console.log(planets)
+					  })
+					.catch(error => console.error(error));
+				 
+					}
+					
+			},
+			addplanets:(data)=>{
+				const {planets}=getStore()
+				setStore({planets:[...planets, data]})
 			},
 			changeColor: (index, color) => {
 				//get the store

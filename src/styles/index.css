@@ -1,3 +1,25 @@
 /* 
     General Styles
 */
+.card{
+    width:350px;
+    height: 370px;
+}
+.imagenCard{
+    width:350px;
+    height:180px;
+    background-color: gainsboro;
+}
+.card-body{
+    width:350px;
+    height:190px;
+}
+.blogo{
+    border:0px;
+    width:fit-content;
+    
+}
+.logostarwars{
+    width:10%;
+   
+}

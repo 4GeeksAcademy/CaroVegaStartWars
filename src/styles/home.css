@@ -1,0 +1,12 @@
+.divcard{
+    width: fit-content;
+    height: fit-content;
+}
+.contenedorcardsplanets{
+    display:flex;
+    overflow-x: auto;
+    width: auto;
+    height: 500px;
+    
+    white-space: nowrap;
+}
