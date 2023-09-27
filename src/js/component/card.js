@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import { BsHeart } from "react-icons/bs";
 
 export const Card = (props) => {
+    const { store, actions } = useContext(Context);
+
+    function clickhearts(name) {
+        if (!store.hearts.includes(name)) {
+            const updatedHearts = [...store.hearts, name];
+            actions.setfavorites(updatedHearts);
+        }
+    }
+    
+   
 	return (
 		<div className="card" >
             <div className = "imagenCard">400x200</div>
@@ -16,7 +27,7 @@ export const Card = (props) => {
                     <Link to={`/detailplanet/${props.index}`}>
                         <button>Learn more!</button>
                     </Link>
-                    <button><BsHeart/></button>
+                    <button onClick={()=>{clickhearts(props.name)} }><BsHeart/></button>
                 </div>
             </div>
           

@@ -1,20 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			planets: []
-		},
+				planets: [],
+				hearts:[]
+			},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -52,6 +41,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addplanets:(data)=>{
 				const {planets}=getStore()
 				setStore({planets:[...planets, data]})
+			},
+			setfavorites:(name)=>{
+				setStore({hearts:name})
+			},
+			deletehearts:(index)=>{
+				console.log(index)
 			},
 			changeColor: (index, color) => {
 				//get the store
