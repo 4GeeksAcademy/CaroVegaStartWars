@@ -2,18 +2,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 				planets: [],
-				hearts:[]
+				hearts:[],
+				startships: [],
+				characters:[]
 			},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},loadData:() =>{
+				const {loadDataplanets}=getActions();
+				loadDataplanets();
+				const {loadDatastartship}=getActions();
+				loadDatastartship();
+				const {loadDatacharacters}=getActions();
+				loadDatacharacters();
 			},
 			loadDataplanets: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
-				const {planets}= getStore();
 				for(let i=1; i<=60; i++){
 				fetch("https://www.swapi.tech/api/planets"+"/"+ i.toString()
 				)
@@ -21,17 +29,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (res.status>= 200 && res.status<=300){
 							console.log("el request se hizo bien");
 							return res.json();
-						}else if (res.status ==404){
-							
+						}else{
 							console.log(`hubo un error ${res.status} en el request`)
-							createuser();
 						}
 					})
 					.then(data => {
 							console.log (data.result.properties)
 							const{addplanets}=getActions();
 							addplanets(data.result.properties);
-							// console.log(planets)
+							
 					  })
 					.catch(error => console.error(error));
 				 
@@ -48,8 +54,61 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deletehearts:(indexdelete)=>{
 				setStore({hearts:hearts.filter((item, index)=>index!=indexdelete)})
 				
-			},
-			changeColor: (index, color) => {
+			},loadDatastartship: () => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				for(let i=2; i<=75; i++){
+				fetch("https://www.swapi.tech/api/starships"+"/"+ i.toString()
+				)
+					.then(res => {
+						if (res.status>= 200 && res.status<=300){
+							console.log("el request se hizo bien");
+							return res.json();
+						}else{
+							console.log(`hubo un error ${res.status} en el request`)
+							}
+					})
+					.then(data => {
+							const{addstartship}=getActions();
+							addstartship(data.result.properties);
+					})
+					.catch(error => console.error(error));
+				 
+					}
+					
+			},addstartship:(data)=>{
+				const {startships}=getStore();
+				setStore({startships:[...startships, data]});
+
+			},loadDatacharacters: () => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				for(let i=1; i<=83; i++){
+				fetch("https://www.swapi.tech/api/starships"+"/"+ i.toString()
+				)
+					.then(res => {
+						if (res.status>= 200 && res.status<=300){
+							console.log("el request se hizo bien");
+							return res.json();
+						}else{
+							console.log(`hubo un error ${res.status} en el request`)
+							}
+					})
+					.then(data => {
+							const{addcharacter}=getActions();
+							addcharacter(data.result.properties);
+					})
+					.catch(error => console.error(error));
+				 
+					}
+					
+			},addcharacter:(data)=>{
+				const {characters}=getStore();
+				setStore({characters:[...characters, data]});
+
+			},changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
 
