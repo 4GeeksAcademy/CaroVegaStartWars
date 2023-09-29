@@ -18,7 +18,7 @@ export const Navbar = () => {
    						 Favorites {store.hearts.length}
   					</button>
   					<ul className="dropdown-menu">
-					  {store.hearts.map((item, index) => {
+					  {store.hearts.length===0?(<li>empty</li>):(store.hearts.map((item, index) => {
 						return (
 						<li
 							key={index}
@@ -27,7 +27,7 @@ export const Navbar = () => {
 											
 						</li>
 					);
-				})}
+				}))}
 					  	
   					</ul>
 				</div>
