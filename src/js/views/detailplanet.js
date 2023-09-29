@@ -25,34 +25,34 @@ export const DetailPlanet = () => {
       }
 
 	return (
-	<div className="contenedordetail">
+	<div className="contenedordetail col-md-10 mx-auto">
 		<div className="contenedorimgdatos">
-            <div className="imgdetail p-2">imagen</div>
+            <div className="imgdetail p-2 text-center fs-2 text text-secondary-emphasis"><p className="imgdet">800x600</p></div>
             <div className="contenedortexto p-2">
                 <h1>{dataplanet.name}</h1>
                 <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit</p>
             </div>
         </div>
         <div>
-            <table className="table">
+            <table className="tabledescrip mt-3">
                 <thead>
                     <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Climate</th>
-                    <th scope="col">Population</th>
-                    <th scope="col">Orbital <br></br>Period</th>
-                    <th scope="col">Rotation<br></br>Period</th>
-                    <th scope="col">Diameter</th>
+                    <th scope="col"><p className="text-danger">Name</p></th>
+                    <th scope="col text-danger"><p className="text-danger">Climate</p></th>
+                    <th scope="col text-danger"><p className="text-danger">Population</p></th>
+                    <th scope="col text-danger"><p className="text-danger">Orbital <br></br>Period</p></th>
+                    <th scope="col text-danger"><p className="text-danger">Rotation<br></br>Period</p></th>
+                    <th scope="col text-danger"><p className="text-danger">Diameter</p></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td>{dataplanet.name}</td>
-                    <td>{dataplanet.climate}</td>
-                    <td>{dataplanet.population}</td>
-                    <td>{dataplanet.orbital_period}</td>
-                    <td>{dataplanet.rotation_period}</td>
-                    <td>{dataplanet.diameter}</td>
+                    <td className="text-danger">{dataplanet.name}</td>
+                    <td className="text-danger">{dataplanet.climate}</td>
+                    <td className="text-danger">{dataplanet.population}</td>
+                    <td className="text-danger">{dataplanet.orbital_period}</td>
+                    <td className="text-danger">{dataplanet.rotation_period}</td>
+                    <td className="text-danger">{dataplanet.diameter}</td>
                     </tr>
                     </tbody>
             </table>

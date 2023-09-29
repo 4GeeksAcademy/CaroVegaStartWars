@@ -11,12 +11,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},loadData:() =>{
+				const {loadDatacharacters}=getActions();
+				loadDatacharacters(1,27);
 				const {loadDataplanets}=getActions();
 				loadDataplanets();
+				loadDatacharacters(28,55);
 				const {loadDatastartship}=getActions();
 				loadDatastartship();
-				const {loadDatacharacters}=getActions();
-				loadDatacharacters();
+				loadDatacharacters(56,82);
+				
 			},
 			loadDataplanets: () => {
 				/**
@@ -34,7 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					})
 					.then(data => {
-							console.log (data.result.properties)
+							
 							const{addplanets}=getActions();
 							addplanets(data.result.properties);
 							
@@ -52,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({hearts:name})
 			},
 			deletehearts:(indexdelete)=>{
+				const {hearts}=getStore();
 				setStore({hearts:hearts.filter((item, index)=>index!=indexdelete)})
 				
 			},loadDatastartship: () => {
@@ -81,12 +85,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const {startships}=getStore();
 				setStore({startships:[...startships, data]});
 
-			},loadDatacharacters: () => {
+			},loadDatacharacters: (start, end) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
-				for(let i=1; i<=83; i++){
-				fetch("https://www.swapi.tech/api/starships"+"/"+ i.toString()
+				for(let i=start; i<=end; i++){
+				fetch("https://www.swapi.tech/api/people"+"/"+ i.toString()
 				)
 					.then(res => {
 						if (res.status>= 200 && res.status<=300){
@@ -105,6 +109,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 					
 			},addcharacter:(data)=>{
+				console.log(data)
 				const {characters}=getStore();
 				setStore({characters:[...characters, data]});
 

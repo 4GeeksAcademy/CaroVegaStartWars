@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-import { CardCharacters} from "./cardnaves.js";
+import { CardCharacters} from "./cardcharacters";
 import "../../styles/home.css";
 
 export const Characters = () => {
 	const { store } = useContext(Context);
 	return (
-	<div className="contenedorcardsplanets">
+	<div className="contenedorcardscharacter">
 		
-				{store.startships.map((item, index) => {
+				{store.characters.map((item, index) => {
 					return (
 						<div
 							key={index}
 							className="divcard m-5">
-								<CardCharacters name={item.name} model ={item.model} manufacturer={item.manufacturer} index={index}/>		
+								<CardCharacters name={item.name} gender ={item.gender} hair_color={item.hair_color} eye_color={item.eye_color} index={index}/>		
 											
 						</div>
 					);

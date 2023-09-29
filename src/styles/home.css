@@ -6,7 +6,16 @@
     display:flex;
     overflow-x: auto;
     width: auto;
-    height: 500px;
+    min-height: 500px;
+    
+    white-space: nowrap;
+}
+
+.contenedorcardscharacter{
+    display:flex;
+    overflow-x: auto;
+    width: auto;
+    min-height: 700px;
     
     white-space: nowrap;
 }

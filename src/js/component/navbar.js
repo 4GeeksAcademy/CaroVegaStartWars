@@ -8,7 +8,7 @@ import startwars from "../../img/startwars.jpg";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-light  mx-auto mb-3 col-md-10">
 			<Link to="/">
 				<span><img className ="logostarwars" src={startwars}/></span>
 			</Link>

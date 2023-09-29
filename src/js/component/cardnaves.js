@@ -15,19 +15,19 @@ export const CardNaves = (props) => {
     
    
 	return (
-		<div className="card" >
-            <div className = "imagenCard">400x200</div>
-            <div className="card-body">
+		<div className="cardcharacter card" >
+            <div className = "imagenCard text-center fs-3"><p className="imgcard text-secondary-emphasis">400x200</p></div>
+            <div className="card-bodycharacter">
                 <div className="px-3">
-                <h5 className="card-title">{props.name}</h5>
-                <p>Model: {props.model}</p>
-                <p>Manufacturer: {props.manufacturer}</p>
+                <h5 className="card-title fw-bold py-2">{props.name}</h5>
+                <p className="desciption">Model: {props.model}</p>
+                <p className="desciption">Manufacturer: {props.manufacturer}</p>
                 </div>
                 <div className="d-flex justify-content-between p-3">
-                    <Link to={`/detailplanet/${props.index}`}>
-                        <button>Learn more!</button>
+                    <Link to={`/detailstartship/${props.index}`}>
+                        <button className="Blearn"><p className="text-primary mt-1">Learn more!</p></button>
                     </Link>
-                    <button onClick={()=>{clickhearts(props.name)} }><BsHeart/></button>
+                    <button className="Bheart" onClick={()=>{clickhearts(props.name)} }><BsHeart/></button>
                 </div>
             </div>
           
